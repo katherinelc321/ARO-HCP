@@ -1,0 +1,51 @@
+name: Validate API Spec
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  typescript_api_spec_validation:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 'latest'
+
+    - name: Install tsp 
+      run: npm install -g @typespec/compiler@0.51.0
+
+    - name: Install dependencies
+      run: npm install \
+            @typespec/http@0.51.0 \
+            @typespec/rest@0.51.0 \
+            @typespec/versioning@0.51.0 \
+            @typespec/openapi@0.51.0 \
+            @typespec/openapi3@0.51.0 \
+            @azure-tools/typespec-azure-core@0.37.2 \
+            @azure-tools/typespec-autorest@0.37.2 \
+            @azure-tools/typespec-azure-resource-manager@0.37.1
+
+    - name: Install oav 
+      run: npm install -g oav@latest
+        
+    - name: Compile tsp
+      run: tsp compile ./api/redhatopenshift/HcpCluster
+
+    - name: Generate OpenAPI Spec
+      run: oav generate-examples ./api/redhatopenshift/resource-manager/Microsoft.RedHatOpenshift/preview/2024-06-10-preview/openapi.json
+     
+    - name: Check for Uncommitted Changes
+      run: |
+        git diff --exit-code || (echo "::error::Uncommitted changes detected in OpenAPI spec. Please regenerate and commit them." && exit 1)
+
+
