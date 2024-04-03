@@ -28,13 +28,13 @@ jobs:
       run: npm install 
 
     - name: Install oav 
-      run: npm install -g oav@latest
+      run: npm install -g autorest@3.7.1
         
     - name: Compile tsp
       run: tsp compile ./api/redhatopenshift/HcpCluster
 
-    - name: Generate OpenAPI Spec
-      run: oav generate-examples ./api/redhatopenshift/resource-manager/Microsoft.RedHatOpenshift/preview/2024-06-10-preview/openapi.json
+    - name: Generate OpenAPI
+      run: autorest api/autorest-config.yaml
      
     - name: Check for Uncommitted Changes
       run: |
