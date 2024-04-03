@@ -14,26 +14,15 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
 
     - name: Setup Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@c2ac33f2c62f978d6c944d9648125a294e56dc0b # v4.0.2
       with:
         node-version: 'v20.12.0'
 
-    - name: Install tsp 
-      run: npm install -g @typespec/compiler@0.51.0
-
     - name: Install dependencies
-      run: npm install \
-            @typespec/http@0.51.0 \
-            @typespec/rest@0.51.0 \
-            @typespec/versioning@0.51.0 \
-            @typespec/openapi@0.51.0 \
-            @typespec/openapi3@0.51.0 \
-            @azure-tools/typespec-azure-core@0.37.2 \
-            @azure-tools/typespec-autorest@0.37.2 \
-            @azure-tools/typespec-azure-resource-manager@0.37.1
+      run: npm install 
 
     - name: Install oav 
       run: npm install -g oav@latest
