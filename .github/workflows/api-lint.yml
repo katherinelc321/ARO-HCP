@@ -34,9 +34,6 @@ jobs:
         
     - name: Compile tsp
       run: tsp compile ./api/redhatopenshift/HcpCluster
-
-    - name: Generate OpenAPI
-      run: autorest api/autorest-config.yaml
      
     - name: Check for Uncommitted Changes
       run: |
