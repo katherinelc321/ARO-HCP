@@ -15,6 +15,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
+      with:
+        fetch-depth: 1
 
     - name: Setup Node.js
       uses: actions/setup-node@c2ac33f2c62f978d6c944d9648125a294e56dc0b # v4.0.2
