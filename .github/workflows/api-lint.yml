@@ -30,16 +30,16 @@ jobs:
       run: npm ci 
 
     - name: Install oav
-      run: npm install -g oav@0.4.34
+      run: npm install -g oav@3.3.4
 
     - name: Install autorest 
-      run: npm install -g autorest@0.41.1
+      run: npm install -g autorest@3.7.1
         
     - name: Compile tsp
       run: tsp compile ./api/redhatopenshift/HcpCluster
 
     - name: Validate swagger
-      run: oav generate-examples ./api/redhatopenshift/resource-manager/Microsoft.RedHatOpenshift/preview/2024-06-10-preview
+      run: oav generate-examples ./api/redhatopenshift/resource-manager/Microsoft.RedHatOpenshift/preview/2024-06-10-preview/openapi.json
 
     - name: Generate OpenAPI
       run: autorest api/autorest-config.yaml

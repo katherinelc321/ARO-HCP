@@ -24,7 +24,7 @@ npm install -g oav@3.3.4
 
 # Install the autorest used to generate golang and python clients
 # it uses the dotnet, which is installed via feature in devcontainer.json
-npm install -g autorest@0.41.1
+npm install -g autorest@3.7.1
 
 # Install the golang-lint
 # binary will be $(go env GOPATH)/bin/golangci-lint
