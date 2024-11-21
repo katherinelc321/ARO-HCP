@@ -44,6 +44,7 @@ defaults:
       deploy: true
       disableLocalAuth: true
       name: arohcp-rp-{{ .ctx.regionShort }}
+      private: true
 
   # Maestro
   maestro:
@@ -196,6 +197,10 @@ clouds:
               maxCount: 12
           # DNS
           regionalDNSSubdomain: '{{ .ctx.region }}'
+          # Frontend
+          frontend:
+            cosmosDB:
+              private: false
         regions:
           westus2:
             mgmtUserAgentPoolMinCount: 5
@@ -212,6 +217,10 @@ clouds:
           # Maestro
           maestro:
             restrictIstioIngress: false
+          # Frontend
+          frontend:
+            cosmosDB:
+              private: false
       personal-dev:
         # this is the personal DEV environment
         defaults:
@@ -221,3 +230,7 @@ clouds:
               deploy: false
           # DNS
           regionalDNSSubdomain: '{{ .ctx.regionShort }}'
+          # Frontend
+          frontend:
+            cosmosDB:
+              private: false
