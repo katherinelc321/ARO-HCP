@@ -129,11 +129,24 @@
               "name",
               "private"
             ]
+          },
+          "cert": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "name"
+            ]
           }
         },
         "additionalProperties": false,
         "required": [
-          "cosmosDB"
+          "cosmosDB",
+          "cert"
         ]
       },
       "global": {
